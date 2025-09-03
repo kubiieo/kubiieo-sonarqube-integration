@@ -5,7 +5,7 @@ def fib(iterations):
     b = 1
     fib = []
 
-    for iteration in range(iterations):
+    for _ in range(iterations):
         fib.append(a)
         temp = a + b
         a = b
