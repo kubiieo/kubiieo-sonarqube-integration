@@ -32,7 +32,21 @@ jobs:
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v5
         env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        with:  
-          args: >
-            --define sonar.scm.revision="${{ github.sha }}"          
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}        
+
+      - name: Wait for the quality gate result
+        run: sleep 5
+
+      - name: Extract branch name
+        shell: bash
+        run: echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
+        id: extract_branch
+
+      - uses: phwt/sonarqube-quality-gate-action@v1
+        id: quality-gate-check
+        with:
+          sonar-project-key: 'kubiieo_kubiieo-sonarqube-integration'
+          sonar-host-url: 'sonarcloud.io'
+          sonar-token: ${{ secrets.SONAR_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ steps.extract_branch.outputs.branch }}
