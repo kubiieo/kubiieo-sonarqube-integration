@@ -33,7 +33,7 @@ jobs:
         uses: SonarSource/sonarqube-scan-action@v5
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        # https://community.sonarsource.com/t/sonarqube-not-reporting-to-github-for-merge-queue-event/112436
-        with:  
-          args: >
-            --define sonar.scm.revision="${{ github.sha }}"          
+        # # https://community.sonarsource.com/t/sonarqube-not-reporting-to-github-for-merge-queue-event/112436
+        # with:  
+        #   args: >
+        #     --define sonar.scm.revision="${{ github.sha }}"          
