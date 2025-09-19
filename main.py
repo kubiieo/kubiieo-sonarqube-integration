@@ -12,29 +12,7 @@ def fib(iterations):
         b = temp
     return fib
 
-def fib2(iterations):
-    a = 0
-    b = 1
-    fib = []
 
-    for _ in range(iterations):
-        fib.append(a)
-        temp = a + b
-        a = b
-        b = temp
-    return fib
-
-def fib3(iterations):
-    a = 0
-    b = 1
-    fib = []
-
-    for _ in range(iterations):
-        fib.append(a)
-        temp = a + b
-        a = b
-        b = temp
-    return fib
 
 # class TestFib(unittest.TestCase):
 #     def test_first_10(self):
