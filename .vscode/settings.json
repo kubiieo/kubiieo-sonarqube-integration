@@ -1,0 +1,6 @@
+{
+    "sonarlint.connectedMode.project": {
+        "connectionId": "cloudec-code",
+        "projectKey": "kubiieo_kubiieo-sonarqube-integration"
+    }
+}
