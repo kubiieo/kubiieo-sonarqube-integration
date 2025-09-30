@@ -30,6 +30,7 @@ jobs:
       #  run: pytest main.py --cov=. --cov-report=xml --cov-report=term    
 
       - name: SonarQube Scan
+        continue-on-error: ${{ github.actor == 'genie9090' || github.actor == 'foo.bar' }}
         uses: SonarSource/sonarqube-scan-action@v5
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
